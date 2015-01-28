@@ -3,9 +3,11 @@
 
 This is a PHP based solution that adds full text search capabilities to the Ghost blogging platform.
 
-The difference between this and the already established GhostHunter project is that this project uses the actual database to perform the search rather than just using the RSS feed.
+The difference between this and the already established [GhostHunter](https://github.com/i11ume/ghostHunter/) project is that this project uses the actual database to perform the search rather than just using the RSS feed.
 
 The following setup is based on IIS (Internet Information Server), but could just as easily be done with Apache or any other decent web server. Except for the web server setup, there is nothing here that ties this to Windows.
+
+The whole thing is based upon this [article](https://blog.fynydd.com/add-blog-search-to-ghost-with-php/) written by Michael Argentini. The difference from his solution is that the PHP file is basically now just a REST search service and the way you include the actual search is somewhat similar to [GhostHunter](https://github.com/i11ume/ghostHunter/) 
 
 
 # Step 1 #
@@ -115,6 +117,12 @@ Your index file should now look something like.
 	...   
 
 > Note: You can put the input element and the result div wherever you want as long they are called ghost_searchinput and ghost_searchresult.
+
+## What's next? ##
+
+Add more data to the search result such as the author, date and time and so on.
+
+---
 
 That's it. You should now have a searchable blog.
 
