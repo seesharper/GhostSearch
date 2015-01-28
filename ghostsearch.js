@@ -2,7 +2,11 @@ $(document).ready(function(){
 	initializeSearch("#ghost_searchinput", "#ghost_searchresult");
 });
 
-
+if ( typeof String.prototype.endsWith != 'function' ) {
+  String.prototype.endsWith = function( str ) {
+    return this.substring( this.length - str.length, this.length ) === str;
+  }
+};
 
 function initializeSearch(inputSelector, resultSelector){
 	var test = $(inputSelector);
@@ -77,15 +81,21 @@ function initializeSearch(inputSelector, resultSelector){
 
 	// Performs the actual search and returns the result as JSON.
 	function search(searchTerms){		
-		$.get( "ghostsearch.php?s=" + searchTerms, function( data ) {
+		var test = getDocumentFolder();
+
+		$.get(getDocumentFolder() + "ghostsearch.php?s=" + searchTerms, function( data ) {
 			renderSearchResult(data);		
 		}, "json");
 	};
 
 	function getDocumentFolder(){
 		var path = document.location.pathname;
-		var dir = path.substring(path.indexOf('/', 0), path.lastIndexOf('/') + 1);
-		return dir;
+		if (!path.endsWith("/"))
+		{
+			path = path + "/";
+		}
+		return path;
+		
 	}
 
 
