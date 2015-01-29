@@ -36,6 +36,7 @@ function initializeSearch(inputSelector, resultSelector){
 
 		var articleElement = document.createElement("article");
 		articleElement.setAttribute("class", "post");
+		articleElement.setAttribute("style", "text-align:left");
 		var headerElement = document.createElement("header");
 		headerElement.setAttribute("class", "post-header");	
 
